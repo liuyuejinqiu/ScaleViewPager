@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ScaleViewPager">
+        <attr name="svp_minScale" format="float" />
+        <attr name="svp_maxScale" format="float" />
+        <attr name="svp_coverWidth" format="dimension" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,1 @@
+include ':app', ':scaleviewpager', ':scalerecyclerpager', ':recyclerviewpagerlib'

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ScaleRecyclerViewPager">
+        <attr name="srp_minScale" format="float" />
+        <attr name="srp_maxScale" format="float" />
+        <attr name="srp_coverWidth" format="dimension" />
+    </declare-styleable>
+</resources>
