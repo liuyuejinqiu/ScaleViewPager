@@ -4,7 +4,6 @@ A custom ViewPager that can scale display on one page.
 ![ScaleViewPager](https://github.com/liuyuejinqiu/ScaleViewPager/blob/master/screenshot/sample.gif)
 
 ### Use ScaleViewPager library
-------------
 
  Gradle
 ```groovy
@@ -29,7 +28,6 @@ compile 'com.jinqiu:scaleviewpager:1.0.1'
 ```
 
 ### Use ScaleRecyclerViewPager library
-------------
 
  Gradle
 ```groovy
