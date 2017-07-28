@@ -51,8 +51,8 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
         }
         setClipToPadding(false);
         setOverScrollMode(OVER_SCROLL_NEVER);
-        addOnScrollListener(new ScaleOnScrollListener());
         addOnLayoutChangeListener(new ScaleOnLayoutChangeListener());
+        addOnScrollListener(new ScaleOnScrollListener());
         setChildDrawingOrderCallback(new ScaleChildDrawingOrderCallback());
     }
 
@@ -84,23 +84,24 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
         view.setScaleX(mScaleMax);
     }
 
-    /**
-     * 滑动监听
-     */
+
     class ScaleOnScrollListener extends RecyclerView.OnScrollListener {
+
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int scrollState) {
         }
 
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            int childCount = recyclerView.getChildCount();
+
             float width = recyclerView.getChildAt(0).getWidth();
             float padding = (recyclerView.getWidth() - width) / 2;
+            float reduceX = (2.0f - mScaleMax - mScaleMin) * width / 2.0f;
+            int childCount = recyclerView.getChildCount();
             float diff = mScaleMax - mScaleMin;
+
             for (int j = 0; j < childCount; j++) {
                 View v = recyclerView.getChildAt(j);
-                //往左 从 padding 到 -(v.getWidth()-padding) 的过程中，由大到小
                 float rate = 0f;
                 if (v.getLeft() <= padding) {
                     if (v.getLeft() >= padding - v.getWidth()) {
@@ -111,13 +112,12 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
                     v.setScaleY(mScaleMax - rate * diff);
                     v.setScaleX(mScaleMax - rate * diff);
                     if (rate >= 0.5) {
-                        v.setTranslationX((diff * width / 2) * rate
+                        v.setTranslationX(reduceX * rate
                                 + mCoverWidth * Math.abs(Math.abs(rate) - 0.5f) / 0.5f);
                     } else {
-                        v.setTranslationX((diff * width / 2) * rate);
+                        v.setTranslationX(reduceX * rate);
                     }
                 } else {
-                    //往右 从 padding 到 recyclerView.getWidth()-padding 的过程中，由大到小
                     if (v.getLeft() <= recyclerView.getWidth() - padding) {
                         rate = (recyclerView.getWidth() - padding - v.getLeft()) * 1f / v.getWidth();
                     }
@@ -125,10 +125,10 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
                     v.setScaleX(mScaleMin + rate * diff);
 
                     if (rate <= 0.5) {
-                        v.setTranslationX((diff * width / 2) * (rate - 1f)
+                        v.setTranslationX(reduceX * (rate - 1f)
                                 - mCoverWidth * Math.abs(Math.abs(rate) - 0.5f) / 0.5f);
                     } else {
-                        v.setTranslationX((diff * width / 2) * (rate - 1f));
+                        v.setTranslationX(reduceX * (rate - 1f));
                     }
                 }
             }
@@ -136,9 +136,6 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
         }
     }
 
-    /**
-     * layout change 监听
-     */
     class ScaleOnLayoutChangeListener implements OnLayoutChangeListener {
 
         @Override
@@ -151,7 +148,7 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
                     if (getCurrentPosition() == 0) {
                         View v1 = getChildAt(1);
                         float w = v1.getWidth();
-                        v1.setTranslationX(-((mScaleMax - mScaleMin) * w / 2 + mCoverWidth));
+                        v1.setTranslationX(-((2.0f - mScaleMax - mScaleMin) * w / 2.0f+ mCoverWidth));
                         setMinScale(v1);
 
                         View v2 = getChildAt(0);
@@ -161,7 +158,7 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
 
                         View v0 = getChildAt(0);
                         float w = v0.getWidth();
-                        v0.setTranslationX((mScaleMax - mScaleMin) * w / 2 + mCoverWidth);
+                        v0.setTranslationX((2.0f - mScaleMax - mScaleMin) * w / 2.0f + mCoverWidth);
                         setMinScale(v0);
 
                         View v1 = getChildAt(1);
@@ -173,7 +170,7 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
                 if (getChildAt(0) != null) {
                     View v0 = getChildAt(0);
                     float w = v0.getWidth();
-                    v0.setTranslationX((mScaleMax - mScaleMin) * w / 2 + mCoverWidth);
+                    v0.setTranslationX((2.0f - mScaleMax - mScaleMin) * w / 2.0f + mCoverWidth);
                     setMinScale(v0);
                 }
 
@@ -186,7 +183,7 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
                 if (getChildAt(2) != null) {
                     View v2 = getChildAt(2);
                     float w = v2.getWidth();
-                    v2.setTranslationX(-((mScaleMax - mScaleMin) * w / 2 + mCoverWidth));
+                    v2.setTranslationX(-((2.0f - mScaleMax - mScaleMin) * w / 2.0f + mCoverWidth));
                     setMinScale(v2);
                 }
                 //invalidate();
@@ -195,9 +192,6 @@ public class ScaleRecyclerViewPager extends RecyclerViewPager {
         }
     }
 
-    /**
-     * 子View绘制监听
-     */
     class ScaleChildDrawingOrderCallback implements ChildDrawingOrderCallback {
 
         @Override

@@ -17,7 +17,7 @@ import java.util.Collections;
 public class ScaleViewPager extends ViewPager {
 
     private static final String TAG = "ScaleViewPager";
-    private ArrayList<Integer> childCenterX = new ArrayList<>();
+    private ArrayList<Integer> childCenterXAbs = new ArrayList<>();
     private SparseArray<Integer> childIndex = new SparseArray<>();
 
     private float mScaleMax = 1.0f;
@@ -82,7 +82,7 @@ public class ScaleViewPager extends ViewPager {
     @Override
     protected int getChildDrawingOrder(int childCount, int n) {
         if (n == 0 || childIndex.size() != childCount) {
-            childCenterX.clear();
+            childCenterXAbs.clear();
             childIndex.clear();
             int viewCenterX = getViewCenterX(this);
             for (int i = 0; i < childCount; ++i) {
@@ -91,13 +91,13 @@ public class ScaleViewPager extends ViewPager {
                 if (childIndex.get(indexAbs) != null) {
                     ++indexAbs;
                 }
-                childCenterX.add(indexAbs);
+                childCenterXAbs.add(indexAbs);
                 childIndex.append(indexAbs, i);
             }
-            Collections.sort(childCenterX);//1,0,2  0,1,2
+            Collections.sort(childCenterXAbs);//1,0,2  0,1,2
         }
         //那个item距离中心点远一些，就先draw它。（最近的就是中间放大的item,最后draw）
-        return childIndex.get(childCenterX.get(childCount - 1 - n));
+        return childIndex.get(childCenterXAbs.get(childCount - 1 - n));
     }
 
     private int getViewCenterX(View view) {
