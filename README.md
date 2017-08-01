@@ -112,6 +112,7 @@ Other
 
 - Do not set the difference between `maxScale` and `minScale` too much.
 - Do not set `mCoverWidth`,`paddingLeft`and`paddingRight`too large.
+- Analysis of algorithms,[jianshu](http://www.jianshu.com/p/e67aa68d2766)
 
 License
 ----------
