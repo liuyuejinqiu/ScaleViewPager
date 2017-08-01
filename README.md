@@ -54,7 +54,7 @@ Set attributes
 ----------
 in code
 ```java
-  //ScaleViewPager
+        //ScaleViewPager
         ScaleViewPager scaleViewPager = (ScaleViewPager) findViewById(R.id.scaleViewPager);
         scaleViewPager.setAdapter(new ViewPagerAdapter());
         scaleViewPager.setCoverWidth(40f);
@@ -88,6 +88,7 @@ in XML
         app:svp_maxScale="1.0"
         app:svp_coverWidth="20dp"
         app:svp_minScale="0.9" />
+
 <!--<com.jinqiu.view.scalerecyclerpager.ScaleRecyclerViewPager-->
 <com.jinqiu.view.scalerecyclerpager.ScaleRecyclerViewPager
         android:id="@+id/viewpager"
@@ -103,3 +104,8 @@ in XML
         app:srp_maxScale="1.0"
         app:srp_minScale="0.9" />
 ```
+Other
+----------
+
+- Do not set the difference between `maxScale` and `minScale` too much.
+- Do not set `mCoverWidth`,`paddingLeft`and`paddingRight`too large.
