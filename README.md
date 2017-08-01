@@ -1,5 +1,7 @@
 # ScaleViewPager
 A custom ViewPager that can scale display on one page.
+Related blog address [BLOG](http://www.jianshu.com/p/e67aa68d2766)
+
 
 ![ScaleViewPager](https://github.com/liuyuejinqiu/ScaleViewPager/blob/master/screenshot/sample.gif)
 
@@ -109,3 +111,8 @@ Other
 
 - Do not set the difference between `maxScale` and `minScale` too much.
 - Do not set `mCoverWidth`,`paddingLeft`and`paddingRight`too large.
+
+License
+----------
+
+Apache 2.0 and MIT. See [LICENSE](https://github.com/liuyuejinqiu/ScaleViewPager/blob/master/LICENSE.txt) file for details.
