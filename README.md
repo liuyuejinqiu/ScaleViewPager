@@ -50,3 +50,13 @@ compile 'com.jinqiu:scalerecyclerpager:1.0.1'
   <artifact name='scalerecyclerpager' ext='pom' ></artifact>
 </dependency>
 ```
+Set attributes
+----------
+in code
+```java
+ ScaleViewPager scaleViewPager = (ScaleViewPager) findViewById(R.id.scaleViewPager);
+        scaleViewPager.setAdapter(new ViewPagerAdapter());
+        scaleViewPager.setCoverWidth(40f);
+        scaleViewPager.setMaxScale(1.0f);
+        scaleViewPager.setMaxScale(0.9f);
+```
