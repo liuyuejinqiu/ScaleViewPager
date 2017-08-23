@@ -1,7 +1,7 @@
 # ScaleViewPager
 A custom ViewPager that can scale display on one page.
 
-Related blog address [BLOG](http://www.jianshu.com/p/e67aa68d2766) (简书详细解析链接)
+Related blog address [BLOG(简书详细解析链接)](http://www.jianshu.com/p/e67aa68d2766) 
 
 
 ![ScaleViewPager](https://github.com/liuyuejinqiu/ScaleViewPager/blob/master/screenshot/sample.gif)
