@@ -62,7 +62,7 @@ in code
         scaleViewPager.setAdapter(new ViewPagerAdapter());
         scaleViewPager.setCoverWidth(40f);
         scaleViewPager.setMaxScale(1.0f);
-        scaleViewPager.setMaxScale(0.9f);
+        scaleViewPager.setMinScale(0.9f);
 
         //ScaleRecyclerViewPager
         ScaleRecyclerViewPager scaleRecyclerViewPager = (ScaleRecyclerViewPager) findViewById(R.id.viewpager);
@@ -74,7 +74,7 @@ in code
         scaleRecyclerViewPager.setLongClickable(true);
         scaleRecyclerViewPager.setCoverWidth(40f);
         scaleRecyclerViewPager.setMaxScale(1.0f);
-        scaleRecyclerViewPager.setMaxScale(0.9f);
+        scaleRecyclerViewPager.setMinScale(0.9f);
 ```
 in XML
 ```xml
